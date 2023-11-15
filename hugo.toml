@@ -1,0 +1,82 @@
+baseURL = 'https://blog.milindhvijay.com/'
+languageCode = 'en-us'
+title = 'Milindh Vijay'
+theme = "hugo-blog-awesome"
+defaultContentLanguage = "en-gb"
+
+[markup]
+  [markup.highlight]
+    codeFences = true
+    hl_inline = false
+    noClasses = false
+    style = 'github-dark'
+    tabWidth = 4
+  [markup.goldmark.renderer]
+    unsafe = true
+
+[menu]
+  [[menu.main]] 
+    # The page reference (pageRef) is useful for menu highlighting
+    # When pageRef is set, setting `url` is optional; it will be used as a fallback if the page is not found.
+    pageRef = "/"
+    name = "Home"
+    url = "/"
+    weight = 10
+  [[menu.main]]
+    pageRef = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 20
+  [[menu.main]]
+    pageRef = "bio"
+    name = "Bio"
+    url = "/bio"
+    weight = 30
+
+[outputs]
+    home = ["HTML", "RSS", "JSON"]
+
+[params]
+  sitename = "Milindh Vijay"
+  defaultColor = "dark" # set default color mode: dark or light or auto
+  description = "Milindh Vijay' Blog"
+  enableGitInfo = "true"
+  mainSections = ['posts']
+  toc = false # set to false to disable table of contents 'globally'
+  goToTop = true # set to false to disable 'go to top' button
+  showReadingTime = true # whether to show reading time on lists and posts
+
+[params.author]
+  avatar = "avatar.png" # put the file in assets folder; also ensure that image has same height and width
+  # Note: image is not rendered if the resource(avatar image) is not found. No error is displayed.
+  intro = "Milindh Vijay Shajiv Nair"
+  name = "Milindh Vijay"
+  description = "Just an ordinary software engineer brewing half-baked ideas into words and hoping they turn out alright."
+
+# Allow to override webmanifest options
+[params.webmanifest]
+  name = "Milindh Vijay" # will use "params.sitename" or "title" by default
+  short_name = "Milindh Vijay" # same as name
+  start_url = "/" # will use homepage url by default
+  theme_color = "#434648" # default is "#434648" (base color of text). Also will override html `<meta name="theme-color" />`
+  background_color = "#fff" # by default depend on "params.defaultColor" for "light" or "auto" will be set to "#fff" for dark will be "#131418" (color of dark mode background)
+  display = "standalone"
+
+# Allow to override `browserconfig.xml` params (configuration for windows embeded browsers)
+[params.browserconfig]
+  TileColor = "#2d89ef" # default windows 10 blue tile color
+
+[[params.socialIcons]]
+name = "twitter"
+url = "https://x.com/milindhvijay"
+
+[[params.socialIcons]]
+name = "github"
+url = "https://github.com/milindhvijay"
+
+[[params.socialIcons]]
+name = "linkedin"
+url = "http://www.linkedin.com/in/milindhvijay/"
+
+[params]
+  goToTop = true

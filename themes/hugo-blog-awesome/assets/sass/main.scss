@@ -1,0 +1,100 @@
+//////////////// 1. Light Colors /////////////////
+$text-base-color: #434648;
+$text-link-blue: #003fff;
+$text-link-blue-active: #0036c7;
+$bloquote-border: #c4c8cc;
+$blockquote-text: #525b66;
+$inline-code-text: #333638;
+$inline-code-bg: #d8dbe2;
+$toc-bg: #edecec;
+$go-top-bg: #dfe0e397;
+$go-top-bg-hover: #dfe0e3;
+
+$black: #0d122b;
+$light: #ececec;
+$smoke: #d2c7c7;
+$gray: #6b7886;
+$white: #fff;
+
+//////////////// 2. Dark Colors /////////////////
+$dark-text-base-color: #babdc4;
+$dark-text-link-blue: #77a8fd;
+$dark-text-link-blue-active: #5292ff;
+$dark-bloquote-border: #4a4d56;
+$dark-blockquote-text: #9b9ba3;
+$dark-inline-code-text: #c2c4ca;
+$dark-inline-code-bg: #2d2d2d;
+$dark-toc-bg: #323232;
+$dark-go-top-bg: #676767b3;
+$dark-go-top-bg-hover: #676767;
+
+$dark-black: #131418;
+$dark-white: #eaeaea;
+$dark-light: #1b1d25;
+$dark-smoke: #4a4d56;
+$dark-gray: #767f87;
+
+//////////////// 3. Fonts preferences /////////////////
+$sans-family: Open Sans, sans-serif;
+$mono-family: Consolas, monospace;
+// WAS: $base-font-size: 16px;
+$base-font-size: 14px;
+$medium-font-size: $base-font-size * 0.938;
+$small-font-size: $base-font-size * 0.875;
+// WAS: $base-line-height: 1.85;
+$base-line-height: 1.75;
+// ALT: $base-line-height: 1.50;
+
+// Font weight
+// $light-weight: 300; // uncomment if necessary
+$normal-weight: 400;
+// WAS: $bold-weight: 700;
+$bold-weight: 600;
+// $black-weight: 900; // uncomment if necessary
+
+//////////////// 4.Responsive design (media queries) /////////////////
+// WAS: $wide-size: 1024px;
+$wide-size: 1600px;
+// WAS: $narrow-size: 980px;
+$narrow-size: 1200px;
+
+// Padding unit
+// WAS: $spacing-full: 30px
+$spacing-full: 20px;
+// ALT: $spacing-full: 5px 5px;
+$spacing-half: $spacing-full / 2;
+
+// Screen sizes
+$on-mobile: 768px;
+$on-tablet: 769px;
+$on-desktop: 1024px;
+// WAS: $on-widescreen: 1152px;
+$on-widescreen: 1600px;
+
+@mixin media-query($device) {
+    @media screen and (max-width: $device) {
+        @content;
+    }
+}
+
+@mixin relative-font-size($ratio) {
+    font-size: $base-font-size * $ratio;
+}
+
+//////////////// 5. Import all sass files /////////////////
+
+@import "fonts";
+@import "base";
+@import "navbar";
+@import "layout";
+@import "post";
+@import "code";
+
+@import "tableOfContent";
+@import "miscellaneous";
+@import "dark";
+@import "listpage";
+
+{{ with .Site.Params.goToTop }}
+@import "goToTop";
+{{ end }}

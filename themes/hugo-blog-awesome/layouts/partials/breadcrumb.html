@@ -1,0 +1,15 @@
+<!-- Hugo Codex's version -->
+<!-- My modifications changed '.Title' to '.LinkTitle' -->
+<div class="breadcrumb">
+    <ul>
+        <li>
+            <a href="{{ .Site.Home.Permalink }}" class="logo">
+                {{ partial "svgs/home.svg" (dict "height" 25 "width" 25) . }}
+            </a>
+        </li>
+        {{- range after 1 .Ancestors.Reverse }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+        {{- end }}
+        <li><a href="{{ .RelPermalink }}">{{ .LinkTitle }}</a></li>
+    </ul>
+</div>
