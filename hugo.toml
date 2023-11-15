@@ -77,6 +77,3 @@ url = "https://github.com/milindhvijay"
 [[params.socialIcons]]
 name = "linkedin"
 url = "http://www.linkedin.com/in/milindhvijay/"
-
-[params]
-  goToTop = true
