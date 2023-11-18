@@ -8,11 +8,11 @@ Before we get into the problem, let's talk about what IPv6 and Dynamic PD. Imagi
 
 In the past, the city used IPv4 addresses. These addresses were like street addresses, and they worked well for a while. Bust as the city grew, there weren't enough street addresses to go around. This made it difficult for new devices to get connected to the internet.
 
-##That's where IPv6 comes in. 
+## That's where IPv6 comes in. 
 
 IPv6 is like a new addressing system for the city. It's like using a combination of street addresses, postal codes, and GPS coordinates to make sure that every every device has a unique and identifiable address.
 
-##Dynamic  PD is like the city's postal service.
+## Dynamic  PD is like the city's postal service.
 
 When you mode to a new house, you don't have to get a new street address. Instead, you just tell the postal service your new address, and they will start delivering your mail there. Dynamic PD works the same way. It allows devices to get new IP addresses without having to go through a lot of hassle.
 
