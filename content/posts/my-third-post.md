@@ -38,7 +38,7 @@ Now let's break down how IPv6 works from both the perspective of an home nework 
 
     - Devices on the local network can communicate with each other using their IPv6 addresses without needing to go through Network Address Translation (NAT), as is common in IPv4 networks.
 
-## IPv6 from the ISP Side:
+### IPv6 from the ISP Side:
 
 1. Address Allocation:
 
