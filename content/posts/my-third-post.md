@@ -23,7 +23,7 @@ Now let's break down how IPv6 works from both the perspective of an home nework 
 ## IPv6 from the Home Network Side:
 
 1. Router Configuration:
-    The home router receives a dynamic IPv6 prefix
+    - The home router receives a dynamic IPv6 prefix
 
 
 
