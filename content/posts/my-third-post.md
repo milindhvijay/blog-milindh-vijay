@@ -18,5 +18,13 @@ While IPv4 had a limited number of 4.3 billion addresses (4,294,967,296, to be e
 
 Dynamic PD is like the magical real estate agent of the digial world. When you move to a new house, you don't have to get a new street address. Instead, you just tell the postal service your new address, and they will start delivering your mail there. Dynamic PD works the same way. It allows devices to get new IP addresses without having to go through a lot of hassle.
 
+Now let's break down how IPv6 works from both the perspective of an home nework and of an Internet Service Provider:
+
+## IPv6 from the Home Network Side:
+
+1. Router Configuration:
+    The home router receives a dynamic IPv6 prefix
+
+
 
 
