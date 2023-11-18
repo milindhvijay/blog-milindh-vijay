@@ -23,7 +23,33 @@ Now let's break down how IPv6 works from both the perspective of an home nework 
 ## IPv6 from the Home Network Side:
 
 1. Router Configuration:
-    * The home router receives a dynamic IPv6 prefix
+
+    - The home router receives a dynamic IPv6 prefix from the ISP through the Dynamic Prefix Delegation process.
+    
+    - The router is configured to handle the dynamic assignment of IPv6 addresses to devices within home network.
+
+2. Device Configuration:
+
+    - Devices within the home network, such as computers, smartphones, and IoT appliances, uses Stateless Address Autoconfiguration (SLAAC) or DHCPv6 to obtain IPv6 addresses.
+
+    - SLAAC allows devices to generate their IPv6 addresses based on the router's prefix.
+
+3. Local Network Communication:
+
+    - Devices on the local network can communicate with each other using their IPv6 addresses without needing to go through Network Address Translation (NAT), as is common in IPv4 networks.
+
+## IPv6 from the ISP Side:
+
+1. Address Allocation:
+
+    - The ISP is assigned blocks of IPv6 addresses by a regional Internet registry (RIR).
+    - These addresses are then distributed to customers based on their needs and the types of service plan they have.
+
+2. Dynamic Prefix Delegation (PD):
+
+    - ISPs often use Dynamic Prefix Delegation (PD) to assign prefixes dynamically to customer premises equipment (CPE) or home routers.
+    - Dynamic PD allows ISP to allocate a portion of the IPv6 address space to a customer dynamically, adapting to their changing needs.
+
 
 
 
