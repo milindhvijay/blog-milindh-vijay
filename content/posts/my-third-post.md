@@ -20,7 +20,7 @@ Dynamic PD is like the magical real estate agent of the digial world. When you m
 
 Now let's break down how IPv6 works from both the perspective of an home nework and of an Internet Service Provider:
 
-## IPv6 from the Home Network Side:
+### IPv6 from the Home Network Side:
 
 1. Router Configuration:
 
@@ -49,6 +49,32 @@ Now let's break down how IPv6 works from both the perspective of an home nework 
 
     - ISPs often use Dynamic Prefix Delegation (PD) to assign prefixes dynamically to customer premises equipment (CPE) or home routers.
     - Dynamic PD allows ISP to allocate a portion of the IPv6 address space to a customer dynamically, adapting to their changing needs.
+
+## Why Is Dynamic PD BAD?
+
+This is something that a lot of people disagree on in the Indian ISP scene. They advertise that a constantly changing delegated IPv6 prefix is normal and standard. I call BS on it. 
+
+Here's what happens with my ISP (Bharat Sanchar Nigam Ltd. - BSNL) [AS9829]; they reset PPP every 24 hours and the delegated IPv6 prefix change with it. For someone who is a novice, that sounds normal right?, but it isn't. The old IPv6 addresses are still valid and your devices like laptops, phones, TVs, connected to your router will prefer those old v6 address and use it as default while SLAAC gives fresh addresses. Now your devices are using the deprecated addresses to send traffic out and what happens to the response? You guessed it right, they never reach back to your devices. The result is broken IPv6 connectivity.
+
+You can read more about this in here:
+
+https://www.6connect.com/blog/is-your-isp-constantly-changing-the-delegated-ipv6-prefix-on-your-cpe-router/
+
+https://blog.apnic.net/2017/07/07/isps-simplifying-customer-ipv6-addressing-part-1/
+
+Most users will never notice this as the applications you use will fallback to IPv4. This ignorance is what keeps ISPs in India to continue with half-baked IPv6 configurations.
+
+## What Action Did I Take?
+
+Well, like any normal user I contacted my ISP and I wasn't surprised when these "experts" like my friend Daryll Swer likes to call them, couldn't understand the issue here. I tried explaining to them why Dynamic PD is bad and how an ISP as big as BSNL should adhere to standards and best practices. It seemed like we both were talking different languages. 
+
+I put a halt on pursuing my ISP to fix it and try to find quick-fixes ("jugaad") to stop IPv6 from breaking every 24-hours. Disabling IPv6 was never an option as I had to fight for months to get it enabled, and that's worth an entire blog post of itself.
+
+1. Jugaad No.1
+
+
+
+
 
 
 
