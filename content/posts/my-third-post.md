@@ -4,9 +4,9 @@ date: 2023-11-18T11:00:17+05:30
 draft: true
 ---
 
-Before we get into the problem, let's talk about IPv6 and Dynamic PD. Imagine the internet as a giant city. In this city, every house, every store, every office has a unique address. This address is like an IP address, which is how devices on the internet are identified and can communicate with each other.
+Before delving into the issue at hand, let's talk about IPv6 and Dynamic PD. Imagine the internet as a giant city where every home, store, and office has a unique address. This address is like an IP address, which is how devices on the internet are identified and can communicate with each other.
 
-In the past, the city used IPv4 addresses. These addresses were like street addresses, and they worked well for a while. Bust as the city grew, there weren't enough street addresses to go around. This made it difficult for new devices to get connected to the internet.
+In the past, the city used IPv4 addresses. These addresses were like street addresses, and they worked well for a while. As the city expanded, the scarcity of these addresses weren't enough to go around. This made it difficult for new devices to get connected to the internet.
 
 ## IPv6: A Next-Level Addressing Revolution
 
@@ -26,13 +26,13 @@ Now let's break down how IPv6 works from both the perspective of an home nework 
 
     - The home router receives a dynamic IPv6 prefix from the ISP through the Dynamic Prefix Delegation process.
     
-    - The router is configured to handle the dynamic assignment of IPv6 addresses to devices within home network.
+    - The router is configured to handle the dynamic assignment of IPv6 addresses to devices within home network.<br><br>
 
 2. Device Configuration:
 
     - Devices within the home network, such as computers, smartphones, and IoT appliances, uses Stateless Address Autoconfiguration (SLAAC) or DHCPv6 to obtain IPv6 addresses.
 
-    - SLAAC allows devices to generate their IPv6 addresses based on the router's prefix.
+    - SLAAC allows devices to generate their IPv6 addresses based on the router's prefix.<br><br>
 
 3. Local Network Communication:
 
@@ -51,11 +51,9 @@ Now let's break down how IPv6 works from both the perspective of an home nework 
 
 ## Why Is Dynamic PD BAD?
 
-This is something that a lot of people disagree in the Indian ISP scene. They advertise that a constantly changing delegated IPv6 prefix is normal, standard, and secure. I call BS on it. 
+Within the Indian ISP scene, opinions on the normalcy, standardization, and security of a constantly changing delegated IPv6 prefix vary. My ISP (BSNL - AS9829) resets PPP every 24 hours, causing the delegated IPv6 prefix to change accordingly. While this may seem normal, it leads to issues where devices in your home network prefer old IPv6 addresses, resulting in broken IPv6 connectivity.
 
-Here's what happens with my ISP (Bharat Sanchar Nigam Ltd. - BSNL) [AS9829]; they reset PPP every 24 hours and the delegated IPv6 prefix change with it. For someone who is a novice, that sounds normal right?, but it isn't. The old IPv6 addresses are still valid and your devices like laptops, phones, TVs, connected to your router will prefer those old v6 address and use it as default while SLAAC gives fresh addresses. Now your devices are using the deprecated addresses to send traffic out and what happens to the response? You guessed it right, they never reach back to your devices. The result is broken IPv6 connectivity.
-
-You can read more about this in here:
+You can read more about that in here:
 
 [Is your ISP constantly changing the delegated IPv6 prefix on your CPE/router?](https://www.6connect.com/blog/is-your-isp-constantly-changing-the-delegated-ipv6-prefix-on-your-cpe-router/)
 
@@ -63,63 +61,53 @@ You can read more about this in here:
 [ISPs: Simplifying customer IPv6 addressing (Part 1)](https://blog.apnic.net/2017/07/07/isps-simplifying-customer-ipv6-addressing-part-1/)
 
 
-Most users will never notice this as the applications you use will fallback to IPv4. This ignorance is what keeps ISPs in India to continue with half-baked IPv6 configurations.
+Most users won't notice this as applications often fall back to IPv4. This lack of awareness allows ISPs in India to persist with suboptimal IPv6 configurations.
 
 ## What Action Did I Take?
 
-Well, like any normal user I contacted my ISP and I wasn't surprised when these "experts" like my friend Daryll Swer likes to call them, couldn't understand the issue here. I tried explaining to them why Dynamic PD is bad and how an ISP as big as BSNL should adhere to standards and best practices. It seemed like we both were talking different languages. 
+Well, like any normal user I contacted my ISP and I wasn't surprised when these "experts" couldn't understand the issue here. I tried explaining to them why Dynamic PD is bad and how an ISP as big as BSNL should adhere to standards and best practices. It seemed like we both were talking different languages. 
 
-I put a halt on pursuing my ISP to fix it and try to find quick-fixes ("jugaad") to stop IPv6 from breaking every 24-hours. Disabling IPv6 was never an option as I had to fight for months to get it enabled, and that's worth an entire blog post of itself.
+I put a halt on pursuing my ISP to fix it and try to find hacks ([Jugaad](https://en.wikipedia.org/wiki/Jugaad)) to stop IPv6 from breaking every 24-hours. Disabling IPv6 was never an option as I had to fight for months to get it enabled, and that's worth an entire blog post of itself.
 
-1. Jugaad No.1 : Using DHCPv6 IA_NA
+1. Hack #1 : Using DHCPv6 IA_NA<br><br>
 
-    DHCPv6 is the IPv6 version of DHCP (well, sort of). Within DHCPv6, the Information Request (IA_NA) option serves a specific purpose in the process of obtaining IPv6 addresses for devices.
+    DHCPv6 is the IPv6 version of DHCP (well, sort of). Within DHCPv6, the Information Request (IA_NA) option serves a specific purpose in the process of obtaining IPv6 addresses for devices.<br><br>
 
     - IA_NA (Identity Association for Non-Temporary Addresses):
 
-        IA_NA is a key option within DHCPv6 used for obtaining non-temporary(i.e., stable) IPv6 addresses for a device. While SLAAC is stateless and provide temporary addresses, DHCPv6 IA_NA offers a stateful mechanism for obtaining stable addresses. Unlike temporary addresses generated by SLAAC, DHCPv6 IA_NA does not keep and use stale IPv6 addresses after ISP dynamically change IPv6 prefix.
+        IA_NA is a key option within DHCPv6 used for obtaining non-temporary(i.e., stable) IPv6 addresses for a device. While SLAAC is stateless and provide temporary addresses, DHCPv6 IA_NA offers a stateful mechanism for obtaining stable addresses. Unlike temporary addresses generated by SLAAC, DHCPv6 IA_NA does not keep and use stale IPv6 addresses after ISP dynamically change IPv6 prefix.<br><br>
     
-    This solution comes with a caveat; **Android devices don't support DHCPv6.**
+    This solution comes with a caveat; **Android devices don't support DHCPv6.**<br><br>
 
-2. Juaggad No.2 : Changing RA Timers
+2. Hack #2 : Changing Router Advertisement Timers<br><br>
 
-    The reason why I call changing RA Timers a "Juagaad" is because it works but I am probably breaking a bunch of RFCs by doing it. 
+    The reason why I call changing RA Timers a "Juagaad" is because it works but I am probably breaking a bunch of RFCs doing it. <br><br>
     
-    My pfSense firewall comes with these default values:
+    My pfSense firewall comes with these default values:<br><br>
     
-        -   Valid Lifetime : 86400 seconds
-        -   Preferred Lifetime : 14400 seconds
-        -   Minimum RA Interval : 200 seconds
-        -   Maximum RA Interval : 600 seconds    
+        Valid Lifetime : 86400 seconds
+        Preferred Lifetime : 14400 seconds   
     
-    
-    The current setup that works for me now is:
+    The current setup that works for me now is:<br><br>
 
-        -   Valid Lifetime : 7200 seconds
-        -   Preferred Lifetime : 60 seconds
-        -   Minimum RA Interval : 3 seconds
-        -   Maximum RA Interval : 5 seconds
+        Valid Lifetime : 7200 seconds
+        Preferred Lifetime : 60 seconds
 
-    This for some reason negates the issue with IPv6 Dynamic PD. My ISP resets PPPoE every 24 hours and now my devices use new prefixes for IPv6 connectivity. The downside of this approach is that it creates a lot of noise in the network. Sending RA every 3-5 seconds will definitely have some toll on battery life of devices as well.
+    This is the least pfSense will let me go down on RA Timers. This approach, though effective, generates network noise and may impact device battery life.
 
-    I do not advice anyone to follow these steps instead pursue your ISPs to do IPv6 static PD, as that is the correct and only proper solution for this.
+Presently, if my ISP changes the PD, my devices will adopt new addresses, and the old ones will be deprecated.
 
+![Alt text](image.png)
 
-I have been pursuing my ISP (AS9829) to swtich to follow BCOP-690 and give out /56 static PD for residential users. Being a government funded ISP, I do not see it happening anytime soon as most companies follow policy based engineering instead engineering based policies (which I will talk about in another blog post).
+Despite my efforts, convincing my ISP (AS9829) to follow [BCOP-690](https://www.ripe.net/publications/docs/ripe-690) and provide a /56 static PD for residential users has proven challenging. State-owned ISPs often prioritize policy-based engineering over engineering-based policies, a topic for another blog post.
 
-Right now, there are no major telcos or ISPs in my knowledge that do static PD in India. Even if it is going to happen, I believe Jio (AS55836) is going to be the first.
-
-    
-
-    
-
-    
+As of now, no major telcos or ISPs in India implement static PD in my knowledge. If and when it happenss, I predict Jio (AS55836) will likely be the first.
 
 
+### Conclusion
 
+Transitioning to IPv6 and dealing with Dynamic PD nuances has become a key part of the experience. As we've seen, the advantages of more addresses and smoother connectivity come with their share of challenges, especially when ISPS like this don't adhere to standards and best practices.
 
+The hacks discussed here are a result of struggles with ISP configuartions, showcasing the everyday user's need for stability. While pushing for industry standards like BCOP-690 is an ideal vision, the reality, especially when state-owned ISPs, tend to follow policies over practicality.
 
-
-
-
-
+As we tread through the unexplored areas of IPv6 in India, the hope is that awareness grows, and companies like Jio lead the way in adopting reliable IPV6 practices.
