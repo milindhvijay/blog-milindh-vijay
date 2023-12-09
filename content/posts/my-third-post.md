@@ -57,9 +57,11 @@ Here's what happens with my ISP (Bharat Sanchar Nigam Ltd. - BSNL) [AS9829]; the
 
 You can read more about this in here:
 
-Is your ISP constantly changing the delegated IPv6 prefix on your CPE/router?[https://www.6connect.com/blog/is-your-isp-constantly-changing-the-delegated-ipv6-prefix-on-your-cpe-router/]
+[Is your ISP constantly changing the delegated IPv6 prefix on your CPE/router?](https://www.6connect.com/blog/is-your-isp-constantly-changing-the-delegated-ipv6-prefix-on-your-cpe-router/)
 
-ISPs: Simplifying customer IPv6 addressing (Part 1)[https://blog.apnic.net/2017/07/07/isps-simplifying-customer-ipv6-addressing-part-1/]
+
+[ISPs: Simplifying customer IPv6 addressing (Part 1)](https://blog.apnic.net/2017/07/07/isps-simplifying-customer-ipv6-addressing-part-1/)
+
 
 Most users will never notice this as the applications you use will fallback to IPv4. This ignorance is what keeps ISPs in India to continue with half-baked IPv6 configurations.
 
