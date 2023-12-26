@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://blog.milindhvijay.com/</loc>
+    <lastmod>2023-11-15T12:21:04+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.milindhvijay.com/posts/first-blog-post/</loc>
+    <lastmod>2023-11-15T12:21:04+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.milindhvijay.com/posts/</loc>
+    <lastmod>2023-11-15T12:21:04+01:00</lastmod>
+  </url><url>
+    <loc>https://blog.milindhvijay.com/bio/</loc>
+    <lastmod>2023-11-15T10:46:56+05:30</lastmod>
+  </url><url>
+    <loc>https://blog.milindhvijay.com/categories/</loc>
+  </url><url>
+    <loc>https://blog.milindhvijay.com/tags/</loc>
+  </url>
+</urlset>

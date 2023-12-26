@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Milindh Vijay</title>
+    <link>https://blog.milindhvijay.com/posts/</link>
+    <description>Recent content in Posts on Milindh Vijay</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Nov 2023 12:21:04 +0100</lastBuildDate>
+    <atom:link href="https://blog.milindhvijay.com/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>My First Blog Post</title>
+      <link>https://blog.milindhvijay.com/posts/first-blog-post/</link>
+      <pubDate>Wed, 15 Nov 2023 12:21:04 +0100</pubDate>
+      <guid>https://blog.milindhvijay.com/posts/first-blog-post/</guid>
+      <description>A Software Developer&amp;rsquo;s Take: Coding, Tech Shenanigans, and a Dash of Ranting. Hello readers! This is my first ever blog post. I&amp;rsquo;m excited to start sharing my thoughts and perspectives with you all. As I begin this blogging journey, I wanted to give you an idea of the types of topics I plan to cover.
+Software Development and Technology As a software engineer, I will likely focus many posts on software development and technology in general.</description>
+    </item>
+  </channel>
+</rss>
