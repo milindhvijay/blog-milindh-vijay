@@ -1,8 +1,10 @@
 ---
-title: "Hacking My Way Around IPv6 Dynamic PD"
+title: "IPv6"
 date: 2023-11-18T11:00:17+05:30
 draft: false
 ---
+
+# Hacking My Way Around IPv6 Dynamic PD
 
 Before delving into the issue at hand, let's talk about IPv6 and Dynamic PD. Imagine the internet as a giant city where every home, store, and office has a unique address. This address is like an IP address, which is how devices on the internet are identified and can communicate with each other.
 
